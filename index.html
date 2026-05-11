@@ -19,53 +19,73 @@
       <div class="inputs p-4">
         <div class="form-floating mb-3">
           <input
+            oninput="validateForm(this)"
             type="text"
             class="form-control"
             id="productName"
             placeholder=""
           />
+          <p class="alert alert-danger p-2 d-none">
+            product Name must be starts with capital letter, and
+          </p>
           <label for="productName">Product Name :</label>
         </div>
 
         <div class="form-floating mb-3">
           <input
+            oninput="validateForm(this)"
             type="number"
             class="form-control"
             id="productPrice"
             placeholder=""
           />
+          <p class="alert alert-danger p-2 d-none">
+            product Name must be starts with capital letter, and
+          </p>
           <label for="productPrice">Product Price :</label>
         </div>
 
         <div class="form-floating mb-3">
           <input
+            oninput="validateForm(this)"
             type="text"
             class="form-control"
             id="productCategory"
             placeholder=""
           />
+          <p class="alert alert-danger p-2 d-none">
+            product Name must be starts with capital letter, and
+          </p>
           <label for="productCategory">Product Category :</label>
         </div>
 
         <div class="mb-3">
           <label for="productDesc">Product Description :</label>
           <textarea
+            oninput="validateForm(this)"
             type="text"
             class="form-control"
             rows="4"
             id="productDesc"
             placeholder=""
           ></textarea>
+          <p class="alert alert-danger p-2 d-none">
+            product Name must be starts with capital letter, and
+          </p>
         </div>
 
         <div class="mb-3">
           <label for="productImage">Product Image :</label>
           <input
+            oninput="validateForm(this)"
             type="file"
             class="form-control"
             id="productImage"
             placeholder=""
           />
+          <p class="alert alert-danger p-2 d-none">
+            product Name must be starts with capital letter, and
+          </p>
         </div>
 
         <!-- Add Button -->
