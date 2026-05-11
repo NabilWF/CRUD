@@ -16,7 +16,14 @@ if (localStorage.getItem("products") !== null) {
 }
 
 function addProduct() {
-  var product = {
+  if (
+    validateForm(productNameInput) &&
+    validateForm(productPriceInput) &&
+    validateForm(productCategoryInput) &&
+    validateForm(productDescInput) &&
+    validateForm(productImageInput)
+  ) {
+      var product = {
     name: productNameInput.value,
     price: productPriceInput.value,
     category: productCategoryInput.value,
@@ -30,6 +37,7 @@ function addProduct() {
 
   clearForm();
   displayProduct(productList);
+  }
 }
 
 function clearForm() {
@@ -99,7 +107,7 @@ var image = "";
 
 function setFormForUpdate(index) {
   update = index;
-  // productNameInput.value = productList[updateIndex].name;
+  // element.value = productList[updateIndex].name;
   // productPriceInput.value = productList[updateIndex].price;
   // productCategoryInput.value = productList[updateIndex].category;
   // productDescInput.value = productList[updateIndex].desc;
@@ -126,8 +134,33 @@ function updateNewData() {
   };
   localStorage.setItem("products", JSON.stringify(productList));
   clearForm();
+  validateForm()
   displayProduct(productList);
   addBtn.classList.remove("d-none");
   updateBtn.classList.add("d-none");
-  console.log("elk");
+}
+
+function validateForm(element) {
+  var regex = {
+    productName: /^[A-Z]\w{2,10}[\s-]?\w{0,10}$/,
+    productPrice: /^([1-9]\d{3,4}|100000)$/,
+    productCategory: /^(mobile|laptop|tap|watch|tv|airpods)$/i,
+    productDesc: /^.{4,100}$/,
+    productImage: /(jpg|webp|png|jpeg)$/,
+  };
+
+  if (regex[element.id].test(element.value)) {
+    element.classList.add("is-valid");
+    element.classList.remove("is-invalid");
+    element.nextElementSibling.classList.add("d-none");
+    return true;
+  } else {
+    element.classList.add("is-invalid");
+    element.classList.remove("is-valid");
+
+    element.nextElementSibling.classList.remove("d-none");
+    return false;
+  }
+
+  console.log(regex[element.id]);
 }
